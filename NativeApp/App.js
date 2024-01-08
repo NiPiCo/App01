@@ -8,6 +8,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import {CharacterDetail} from "./src/pages/character/detail";
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Character from "./src/pages/character";
+import {globalStyles} from "./src/layout/style";
 
 function NotificationsScreen({ navigation }) {
     return (
@@ -29,8 +30,8 @@ const NavTheme = {
 };
 export default function App() {
     return (
-        <NavigationContainer theme={NavTheme}>
-            <Drawer.Navigator screenOptions={{
+        <NavigationContainer theme={NavTheme} >
+            <Drawer.Navigator  screenOptions={{
                 sceneContainerStyle:{
                     background: 'none'
                 },

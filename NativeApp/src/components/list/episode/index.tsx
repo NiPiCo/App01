@@ -1,27 +1,25 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Card from "../../card";
-import {style} from "./style";
 import {Character} from "../../../types/character-type";
+import {EpisodeType} from "../../../types/episode-type";
 
 interface ListProps<T> {
     list: Array<T>;
 }
 
 
-
-interface ListItemProps {
-    item: Character,
+interface EpisodeItemProp {
+    episode: EpisodeType,
 }
 
-const EpisodeItem: React.FC<ListItemProps> = ({item}) => {
-    return (
-        <View style={style.container}>
-            <Text>{item.name}</Text>
-            <Text>{item.name}</Text>
-            <img src={item.image} width={50} style={style.image}/>
-        </View>
-    );
+const EpisodeItem: React.FC<EpisodeItemProp> = ({episode}) => {
+    return (<TouchableOpacity>
+        <Card>
+            <Text>{episode.name}</Text>
+            <Text>{episode.episode}</Text>
+        </Card>
+    </TouchableOpacity>)
 };
 export default EpisodeItem;
 

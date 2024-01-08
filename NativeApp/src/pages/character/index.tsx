@@ -22,7 +22,7 @@ const Character: React.FC = () => {
             initialRouteName="Home"
         screenOptions={{
             contentStyle: {
-                backgroundColor: '#fff'
+                height: '100%'
             }
         }}
         >

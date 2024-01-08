@@ -12,10 +12,20 @@ export const globalStyles = StyleSheet.create({
         textAlign: "center"
     },
     button: {
-      width: '100%'
+        width: '100%'
     },
     page: {
         padding: 16
     },
-    inputsHovered: {borderColor:'rgba(0,0,0,0)'}
+    appContainer:{
+      backgroundColor: '#cbffd5'
+    },
+    subHeader: {
+        fontSize: 20,
+        paddingTop: 8,
+        paddingBottom: 8,
+        color: ' #4d4a4a',
+        marginTop: 8
+    },
+    inputsHovered: {borderColor: 'rgba(0,0,0,0)'}
 });

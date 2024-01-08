@@ -10,7 +10,6 @@ export const style = StyleSheet.create({
         display: 'flex',
         justifyContent:'center',
         alignItems:'center',
-        height: '100%',
         marginVertical: 8,
         shadowColor: '#171717',
         shadowOpacity: 0.2,
