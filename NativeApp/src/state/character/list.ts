@@ -17,7 +17,8 @@ const characterListSlice = createSlice({
         characters: [],
         characterFilter: {
             name: ""
-        }
+        },
+        next: null,
     } as CharacterListState,
     reducers: {
         setCharacters(state, action) {
@@ -29,15 +30,17 @@ const characterListSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getCharacters.fulfilled, (state, action) => {
-            state.characters = action.payload.results;
+            state.characters = [...state.characters, ...action.payload.results];
+            state.next = action.payload.info.next;
         });
     }
 });
 
-export const getCharacters = createAsyncThunk("characterList/getCharacters", async (filter: any) => {
-    return await fetchData('https://rickandmortyapi.com/api/character/');
+export const getCharacters = createAsyncThunk("characterList/getCharacters", async (filter: any, {getState}) => {
+    const {characterList} = getState();
+    console.log(characterList.next);
+    return characterList.next ? await fetchData(characterList.next) : await fetchData('https://rickandmortyapi.com/api/character/');
 });
-
 
 
 export default characterListSlice;

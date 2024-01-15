@@ -12,9 +12,6 @@ interface DetailRowProps {
     value: string
 }
 export const DetailRow: React.FC<DetailRowProps> = ({label, value}) => {
-    useEffect(() => {
-        fetchData('https://zw-server.de/wetter.php').then(data => console.log(data))
-    },[])
     return (
         <View style={detailCardStyle.textRow}>
             <Text>{label}</Text>
