@@ -38,7 +38,6 @@ const characterListSlice = createSlice({
 
 export const getCharacters = createAsyncThunk("characterList/getCharacters", async (filter: any, {getState}) => {
     const {characterList} = getState();
-    console.log(characterList.next);
     return characterList.next ? await fetchData(characterList.next) : await fetchData('https://rickandmortyapi.com/api/character/');
 });
 
