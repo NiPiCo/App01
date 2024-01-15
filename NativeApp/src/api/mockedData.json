@@ -1,0 +1,29 @@
+{
+  "wetterdaten": [
+    {
+      "stadt": "Berlin",
+      "temperatur": 20,
+      "zustand": "sonnig"
+    },
+    {
+      "stadt": "Paris",
+      "temperatur": 18,
+      "zustand": "bewölkt"
+    },
+    {
+      "stadt": "New York",
+      "temperatur": 25,
+      "zustand": "klar"
+    },
+    {
+      "stadt": "Tokio",
+      "temperatur": 22,
+      "zustand": "regnerisch"
+    },
+    {
+      "stadt": "London",
+      "temperatur": 15,
+      "zustand": "windig"
+    }
+  ]
+}

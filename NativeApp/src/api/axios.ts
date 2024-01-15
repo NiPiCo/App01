@@ -1,10 +1,15 @@
 import axios from 'axios';
 import {CharacterFilter} from "../types/filter-types";
 
-const axiosInstance = axios.create({
+const axiosCharacterInstance = axios.create({
     baseURL: 'https://rickandmortyapi.com/api/character/',
     timeout: 5000,
 });
+const axiosEpisodeInstance = axios.create({
+    baseURL: 'https://rickandmortyapi.com/api/episode/',
+    timeout: 5000,
+});
+
 export const fetchData = async (url) => {
     try {
         const response = await axios.get(url);
@@ -17,18 +22,26 @@ export const fetchData = async (url) => {
 
 export const fetchCharacter = async (charId: number) => {
     try {
-        const response = await axiosInstance.get(`/${charId}`);
+        const response = await axiosCharacterInstance.get(`/${charId}`);
         return response.data;
     } catch (error) {
-
+        return []
     }
 };
 
 export const fetchAllCharacters = async (filter: CharacterFilter) => {
     try {
-        const response = await axiosInstance.get('', {
+        const response = await axiosCharacterInstance.get('', {
             params: filter
         });
+        return response.data;
+    } catch (error) {
+    }
+};
+
+export const fetchAllEpisodes = async () => {
+    try {
+        const response = await axiosEpisodeInstance.get('');
         return response.data;
     } catch (error) {
     }

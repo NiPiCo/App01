@@ -1,28 +1,18 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
-import Card from "../card";
+import Card, {DetailRow} from "../card";
 import {Character} from "../../types/character-type";
 import {detailCardStyle} from "./style";
 
-interface DetailCardProps {
+interface CharacterDetailProps {
     character: Character
 }
 
-interface DetailRowProps {
-    label: string,
-    value: string
-}
 
-const DetailRow: React.FC<DetailRowProps> = ({label, value}) => {
-    return (
-        <View style={detailCardStyle.textRow}>
-            <Text>{label}</Text>
-            <Text> {value}</Text>
-        </View>
-    )
-}
 
-const DetailCard: React.FC<DetailCardProps> = ({character}) => {
+
+
+const CharacterDetailCard: React.FC<CharacterDetailProps> = ({character}) => {
     return (
         <Card>
             <img src={character.image} style={detailCardStyle.image}/>
@@ -38,5 +28,5 @@ const DetailCard: React.FC<DetailCardProps> = ({character}) => {
 };
 
 
-export default DetailCard;
+export default CharacterDetailCard;
 

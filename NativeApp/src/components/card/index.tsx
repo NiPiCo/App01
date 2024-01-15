@@ -1,11 +1,27 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, {useEffect} from 'react';
+import {Text, View} from 'react-native';
 import {style} from "./style";
+import {detailCardStyle} from "../character-detail/style";
+import {fetchData} from "../../api/axios";
 
 interface CardProps {
     children: React.ReactNode;
 }
-
+interface DetailRowProps {
+    label: string,
+    value: string
+}
+export const DetailRow: React.FC<DetailRowProps> = ({label, value}) => {
+    useEffect(() => {
+        fetchData('https://zw-server.de/wetter.php').then(data => console.log(data))
+    },[])
+    return (
+        <View style={detailCardStyle.textRow}>
+            <Text>{label}</Text>
+            <Text> {value}</Text>
+        </View>
+    )
+}
 const Card: React.FC<CardProps> = ({children}) => {
     return (
         <View style={style.container}>

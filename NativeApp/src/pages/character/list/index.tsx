@@ -10,10 +10,10 @@ import {Character} from "../../../types/character-type";
 import FilterCharacterComponent from "../../../components/filter/filter-character-component";
 import _ from "lodash";
 import {CharacterFilter} from "../../../types/filter-types";
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "../../../state/store";
+import {getCharacters} from "../../../state/character/list";
 
-const Stack = createNativeStackNavigator();
 
 interface ListProps extends WithAppBarProps {
     navigation: any
@@ -26,30 +26,33 @@ const CharacterList: React.FC<ListProps> = ({navigation}) => {
         const [data, setData] = useState(null)
         const [hasNextPage, setHasNextPage] = useState(false)
         const [filter, setFilter] = useState<CharacterFilter>({name: ''})
+        const dispatch = useDispatch<AppDispatch>()
+        const state = useSelector((state: RootState) => state.characterList)
         const onFilterChanged = _.debounce((charName) => {
-            setFilter({name: charName});
+            /* setFilter({name: charName});*/
+            dispatch({type: 'setFilter', payload: {name: charName}});
         }, 500);
 
-        useEffect(() => {
-            console.log(filter)
-        }, [filter])
+        /*   useEffect(() => {
+               const fetchData = async (filter: CharacterFilter) => {
+                   try {
+                       const data = await fetchAllCharacters(filter);
+                       setCharsData(data.results);
+                       setData(data)
+                       data.info?.next ? setHasNextPage(true) : setHasNextPage(false)
+                       console.log('ARRAY')
+                   } catch (error) {
+                       setCharsData([])
+                       setHasNextPage(false)
+                   }
+               };
+               fetchData(filter);
+           }, [filter]);*/
 
         useEffect(() => {
-            const userId = 1;
-            const fetchData = async (filter: CharacterFilter) => {
-                try {
-                    const data = await fetchAllCharacters(filter);
-                    setCharsData(data.results);
-                    setData(data)
-                    data.info?.next ? setHasNextPage(true) : setHasNextPage(false)
-                    console.log('ARRAY')
-                } catch (error) {
-                    setCharsData([])
-                    setHasNextPage(false)
-                }
-            };
-            fetchData(filter);
-        }, [filter]);
+            dispatch(getCharacters({next: 'ABC', filter: 'ABC'}))
+
+        }, [])
 
         const showMore = () => {
             let fetchData = async () => {
@@ -73,10 +76,11 @@ const CharacterList: React.FC<ListProps> = ({navigation}) => {
 
             <View style={globalStyles.page}>
                 <FilterCharacterComponent onFilterChanged={onFilterChanged}/>
-                {chars?.map((listItem) => {
-                    return <TouchableOpacity key={listItem.id}
-                                             onPress={() => navigation.navigate('Detail', {character: listItem})}>
-                        <ListItem item={listItem}/>
+                {state.characters?.map((char) => {
+                    return <TouchableOpacity
+                        key={char.id}
+                        onPress={() => navigation.navigate('Detail', {character: char})}>
+                        <ListItem item={char}/>
                     </TouchableOpacity>
                 })}
                 {

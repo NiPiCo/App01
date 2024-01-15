@@ -1,5 +1,6 @@
+<script src="http://localhost:8097"></script>
 import React, {useEffect, useState} from 'react';
-import {View } from 'react-native';
+import {View} from 'react-native';
 
 import {fetchCharacter} from "../../api/axios";
 import RandomCard from "../../components/random-card";
@@ -21,7 +22,6 @@ const Home: React.FC<HomeProps> = () => {
                 const data = await fetchCharacter(userId);
                 setCharData(data);
             } catch (error) {
-                // Handle error
                 console.error('Error fetching character data:', error);
             }
         };
@@ -29,7 +29,7 @@ const Home: React.FC<HomeProps> = () => {
     }, []);
 
     return (
-        <View style={globalStyles.page} >
+        <View style={globalStyles.page}>
             <RandomCard name={'Test'} location={'Erde'} detailImage={{uri: char?.image}}/>
         </View>
     );

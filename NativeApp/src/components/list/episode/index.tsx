@@ -14,12 +14,12 @@ interface EpisodeItemProp {
 }
 
 const EpisodeItem: React.FC<EpisodeItemProp> = ({episode}) => {
-    return (<TouchableOpacity>
+    return (<View>
         <Card>
             <Text>{episode.name}</Text>
             <Text>{episode.episode}</Text>
         </Card>
-    </TouchableOpacity>)
+    </View>)
 };
 export default EpisodeItem;
 

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Button, Text, TouchableOpacity, View} from "react-native";
 import {globalStyles} from "../../../layout/style";
-import DetailCard from "../../../components/detail-card";
+import CharacterDetailCard from "../../../components/character-detail";
 import {useRoute} from "@react-navigation/native";
 import EpisodeItem from "../../../components/list/episode";
 import {fetchData} from "../../../api/axios";
@@ -28,7 +28,7 @@ export const CharacterDetail: React.FC = ({}) => {
         return (
             <TouchableOpacity >
             <View style={globalStyles.page}>
-                <DetailCard character={character}/>
+                <CharacterDetailCard character={character}/>
                 <Text style={globalStyles.subHeader}>Folgen mit {character.name}</Text>
                 {episodes && episodes.map((item, index) => {
                     return <EpisodeItem key={index} episode={item}/>
