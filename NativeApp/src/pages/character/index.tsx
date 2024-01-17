@@ -3,6 +3,8 @@ import {CharacterDetail} from "./detail";
 import CharacterList from "./list";
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useSelector} from "react-redux";
+import {RootState} from "../../state/store";
 
 const Stack = createNativeStackNavigator();
 const NavTheme = {
@@ -14,6 +16,7 @@ const NavTheme = {
 };
 
 const Character: React.FC = () => {
+    const state = useSelector((state: RootState) => state.characterDetail);
     return (
         <NavigationContainer  independent={true} theme={NavTheme}>
             <Stack.Navigator
@@ -41,7 +44,7 @@ const Character: React.FC = () => {
                 <Stack.Screen
                     name="Detail"
                     component={CharacterDetail}
-                    options={({route}) => ({title: route.params.character.name})}
+                    options={({route}) => ({title:state.character.name})}
                 />
             </Stack.Navigator>
         </NavigationContainer>

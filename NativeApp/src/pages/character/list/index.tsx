@@ -25,29 +25,30 @@ const CharacterList: React.FC<ListProps> = ({navigation}) => {
         const dispatch = useDispatch<AppDispatch>();
         const state = useSelector((state: RootState) => state.characterList);
 
-        const onFilterChanged = _.debounce((charName) => {
-            dispatch({type: 'setFilter', payload: {name: charName}});
-        }, 500);
 
         useEffect(() => {
-            dispatch(getCharacters({next: 'ABC', filter: 'ABC'}));
-
-        }, []);
+            console.log(state.characterFilter)
+            dispatch(getCharacters(state.characterFilter));
+        }, [state.characterFilter]);
 
         return (
 
             <View style={globalStyles.page}>
-                <FilterCharacterComponent onFilterChanged={onFilterChanged}/>
+                <FilterCharacterComponent/>
                 {state.characters?.map((char) => {
                     return <TouchableOpacity
                         key={char.id}
-                        onPress={() => navigation.navigate('Detail', {character: char})}>
+                        onPress={() => {
+                            dispatch({type: 'characterDetail/setCharacter', payload: char})
+                            navigation.navigate('Detail')
+                        }}>
                         <ListItem item={char}/>
                     </TouchableOpacity>;
                 })}
                 {
                     state.next &&
-                    <Button title={'Mehr anzeigen'} onPress={() => dispatch(getCharacters({next: 'ABC', filter: 'ABC'}))}/>
+                    <Button  title={'Mehr anzeigen'} onPress={() => dispatch(getCharacters({next: 'ABC', filter: 'ABC'}))}/>
+
                 }
             </View>
 

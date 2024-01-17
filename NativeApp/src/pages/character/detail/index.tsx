@@ -5,35 +5,35 @@ import CharacterDetailCard from "../../../components/character-detail";
 import {useRoute} from "@react-navigation/native";
 import EpisodeItem from "../../../components/list/episode";
 import {fetchData} from "../../../api/axios";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "../../../state/store";
+import {getEpisodes} from "../../../state/character/detail";
 
 
 export const CharacterDetail: React.FC = ({}) => {
 
-        const route = useRoute();
-        const {character} = route.params
-        const [episodes, setEpidodes] = useState([])
+        const state = useSelector((state: RootState) => state.characterDetail);
+        const dispatch = useDispatch<AppDispatch>();
 
         useEffect(() => {
-            Promise.all(character.episode.map(url => fetchData(url)))
-                .then((results) => {
-                    setEpidodes(results)
-                    console.log('Alle Anfragen erfolgreich:', results);
-                })
-                .catch((error) => {
-                    // Fehler bei mindestens einer Anfrage
-                    console.error('Fehler bei mindestens einer Anfrage:', error);
-                });
-        }, [])
+            let loadEpisodes = async () => {
+                let episodes = await dispatch(getEpisodes(state.character.episode));
+                dispatch({type: 'characterDetail/setEpisodes', payload: episodes.payload});
+                console.log(state)
+                return episodes.payload;
+            };
+            loadEpisodes();
+        }, []);
 
         return (
-            <TouchableOpacity >
-            <View style={globalStyles.page}>
-                <CharacterDetailCard character={character}/>
-                <Text style={globalStyles.subHeader}>Folgen mit {character.name}</Text>
-                {episodes && episodes.map((item, index) => {
-                    return <EpisodeItem key={index} episode={item}/>
-                })}
-            </View>
+            <TouchableOpacity>
+                <View style={globalStyles.page}>
+                    <CharacterDetailCard character={state.character}/>
+                    <Text style={globalStyles.subHeader}>Folgen mit {state.character.name}</Text>
+                    {state.episodes && state.episodes.map((item, index) => {
+                        return <EpisodeItem key={index} episode={item} />;
+                    })}
+                </View>
             </TouchableOpacity>
         );
     }

@@ -5,16 +5,17 @@ import {CharacterFilter} from "../../types/filter-types";
 import {Picker} from '@react-native-picker/picker';
 import {filterStyle} from "./style";
 import {globalStyles} from "../../layout/style";
+import {useDispatch} from "react-redux";
 
-interface FilterCharacterComponentProps {
-    onFilterChanged: (value: string) => void;
-}
 
-const FilterCharacterComponent: React.FC<FilterCharacterComponentProps> = ({onFilterChanged}) => {
+const FilterCharacterComponent: React.FC = () => {
 
-    const [charName, setCharName] = useState('');
-    const [filter, setFilter] = useState<CharacterFilter>({name: ''});
     const [selectedStatus, setSelectedStatus] = useState('');
+    const dispatch = useDispatch();
+
+    const onFilterChanged = _.debounce((charName: string) => {
+        dispatch({type: 'characterList/setCharacterFilter', payload: {name: charName}});
+    }, 500);
 
     const options = [
         { value: '', label: 'egal' },

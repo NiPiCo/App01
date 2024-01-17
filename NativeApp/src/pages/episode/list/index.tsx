@@ -8,6 +8,10 @@ import {fetchAllCharacters, fetchAllEpisodes} from "../../../api/axios";
 import {globalStyles} from "../../../layout/style";
 import EpisodeItem from "../../../components/list/episode";
 import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "../../../state/store";
+import {getCharacters} from "../../../state/character/list";
+import {getEpisodes} from "../../../state/episode/list";
 
 
 interface EpisodeDetailProps {
@@ -15,7 +19,7 @@ interface EpisodeDetailProps {
 }
 
 interface EpisodeDetailListProps {
-    navigation: any
+    navigation: any;
 }
 
 const EpisodeDetailCard: React.FC<EpisodeDetailProps> = ({episode}) => {
@@ -32,62 +36,29 @@ const EpisodeDetailCard: React.FC<EpisodeDetailProps> = ({episode}) => {
 
 const EpisodeList: React.FC<EpisodeDetailListProps> = ({navigation}) => {
 
-        const [episodes, setEpisodes] = useState<null | Array<EpisodeType>>(null);
-        const [data, setData] = useState(null)
-        const [hasNextPage, setHasNextPage] = useState(false)
-        useEffect(() => {
+        const dispatch = useDispatch<AppDispatch>();
+        const state = useSelector((state: RootState) => state.episodeList);
 
-            const fetchData = async () => {
-                try {
-                    const data = await fetchAllEpisodes();
-                    console.log(data)
-                    setEpisodes(data.results);
-                    setData(data)
-                    data.info?.next ? setHasNextPage(true) : setHasNextPage(false)
-                    console.log('ARRAY')
-                } catch (error) {
-                    setEpisodes([])
-                    console.log('ERROR')
-                    setHasNextPage(false)
-                }
-            };
-            fetchData();
+        useEffect(() => {
+            console.log('ABC')
+            dispatch(getEpisodes({}));
         }, []);
 
-        const showMore = () => {
-            let fetchData = async () => {
-                let axiosInstance = axios.create({
-                    baseURL: data.info.next,
-                    timeout: 5000,
-                });
-                try {
-                    const response = await axios.get('');
-                    setEpisodes([...episodes, ...response?.data.results]);
-                    setData(response?.data);
-                    response?.data.info?.next ? setHasNextPage(true) : setHasNextPage(false)
-                } catch (error) {
-                    setEpisodes([])
-                    console.log('RRRRR')
-                    setHasNextPage(false)
-                }
-            };
-            fetchData()
-        }
 
         return (
             <View style={globalStyles.page}>
-                {episodes?.map((episode) => {
+                {state.episodes?.map((episode) => {
                     return <TouchableOpacity
                         key={episode.id}
                         onPress={() => {
-                            console.log('ABC')
-                            navigation.navigate('Detail', {episode: episode})
+                            console.log('ABC');
+                            navigation.navigate('Detail', {episode: episode});
                         }}>
-                        <EpisodeItem episode={episode} />
-                    </TouchableOpacity>
+                        <EpisodeItem episode={episode}/>
+                    </TouchableOpacity>;
                 })}
                 {
-                    !!hasNextPage && <Button title={'Mehr anzeigen'} onPress={() => showMore()}/>
+                    !!state.next && <Button title={'Mehr anzeigen'} onPress={() => dispatch(getEpisodes({}))}/>
                 }
             </View>
         );

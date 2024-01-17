@@ -2,25 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="582010c3-b86b-40e0-9add-a6006fb46a71" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NativeApp/assets/rick-morty-portal-i40514.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeApp/src/api/mockedData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeApp/src/pages/episode/detail/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeApp/src/pages/episode/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeApp/src/pages/episode/list/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeApp/src/state/character/list.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeApp/src/state/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NativeApp/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NativeApp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NativeApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NativeApp/src/state/character/detail.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NativeApp/src/state/episode/detail.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NativeApp/src/state/episode/list.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NativeApp/src/api/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/api/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NativeApp/src/components/card/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/components/card/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NativeApp/src/components/detail-card/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/components/character-detail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NativeApp/src/components/detail-card/style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/components/character-detail/style.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NativeApp/src/components/list/episode/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/components/list/episode/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NativeApp/src/components/filter/filter-character-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/components/filter/filter-character-component.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NativeApp/src/pages/character/detail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/pages/character/detail/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NativeApp/src/pages/character/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/pages/character/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NativeApp/src/pages/character/list/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/pages/character/list/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NativeApp/src/pages/home/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/pages/home/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NativeApp/src/pages/episode/list/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/pages/episode/list/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NativeApp/src/state/character/list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/state/character/list.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NativeApp/src/state/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/NativeApp/src/state/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,18 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Anwender/PhpstormProjects/Appentwicklung/NativeApp/src",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "C:\\Users\\Anwender\\PhpstormProjects\\Appentwicklung\\NativeApp\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anwender/PhpstormProjects/Appentwicklung/NativeApp/src&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.TypeScript&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Anwender\\PhpstormProjects\\Appentwicklung\\NativeApp\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Anwender\PhpstormProjects\Appentwicklung\NativeApp\src" />
@@ -89,7 +82,9 @@
       <workItem from="1704964425003" duration="13627000" />
       <workItem from="1705309949869" duration="483000" />
       <workItem from="1705310448513" duration="1301000" />
-      <workItem from="1705312006299" duration="8628000" />
+      <workItem from="1705312006299" duration="10623000" />
+      <workItem from="1705395828021" duration="7724000" />
+      <workItem from="1705484219456" duration="8315000" />
     </task>
     <servers />
   </component>
