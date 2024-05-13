@@ -16,9 +16,12 @@ return new class extends Migration {
 
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('url');
-            $table->timestamps();
+            $table->string('name', 255);
+            $table->string('type', 255)->nullable();
+            $table->string('dimension', 255)->nullable();
+            $table->string('url', 255);
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();       
         });
 
         Schema::create('episodes', function (Blueprint $table) {
@@ -43,7 +46,7 @@ return new class extends Migration {
             $table->string('species');
             $table->string('gender');
             $table->unsignedBigInteger('origin_id');
-            $table->foreign('origin_id')->references('id')->on('origins');
+            $table->foreign('origin_id')->references('id')->on('locations');
             $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('locations');
             $table->string('image');
@@ -69,7 +72,6 @@ return new class extends Migration {
     {
         Schema::dropIfExists('locations');
         Schema::dropIfExists('episodes');
-        Schema::dropIfExists('origins');
         Schema::dropIfExists('characters');
         Schema::dropIfExists('character_episode');
     }
