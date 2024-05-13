@@ -12,12 +12,47 @@ class CharacterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Alle Charaktere aus der Datenbank abrufen
-        $characters = Character::all();
+        $query = Character::query();
+    
+       
+        if ($request->has('status')) {
+            $query->where('status', $request->status);
+        }
+    
+       
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+    
+        
+        $characters = $query->paginate(20);
+    
+        
+        $nextPageUrl = $characters->nextPageUrl();
+        $data = [
+            'info' => [
+                'count' => $characters->total(),
+                'pages' => $characters->lastPage(),
+                'next' => $nextPageUrl,
+                'prev' => $characters->previousPageUrl(),
+            ],
+            'results' => $characters->items(),
+        ];
+    
+       
+        return response()->json($data);
+    }
 
-        // JSON-Antwort mit den Charakteren zurückgeben
-        return response()->json($characters);
+    public function findById($id)
+    {
+    
+        $character = Character::find($id);
+
+        if (!$character) {
+            return response()->json(['error' => 'Character not found'], 404);
+        }
+        return response()->json($character);
     }
 }

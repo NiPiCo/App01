@@ -1,16 +1,18 @@
 import axios from 'axios';
 import {CharacterFilter} from "../types/filter-types";
+import Config from 'react-native-config';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://rickandmortyapi.com/api/character/',
+    baseURL:  'http://localhost:8000/api/characters/',
     timeout: 5000,
 });
-export const fetchData = async (url) => {
+
+export const fetchData = async (url: string) => {
     try {
         const response = await axios.get(url);
         return response.data;
-    } catch (error) {
-        console.error(`Fehler bei Anfrage an ${url}: ${error.message}`);
+    } catch (error : any) {
+        console.error(`Fehler bei Anfrage an ${url}: ${error?.message}`);
         throw error;
     }
 };
