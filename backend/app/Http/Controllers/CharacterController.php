@@ -28,7 +28,7 @@ class CharacterController extends Controller
         }
     
         
-        $characters = $query->with('location')->paginate(20);
+        $characters = $query->with('location')->with('origin')->paginate(20);
       
         
         $nextPageUrl = $characters->nextPageUrl();

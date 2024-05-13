@@ -11,8 +11,5 @@ class Location extends Model
     ];
 
   
-    public function characters()
-    {
-        return $this->hasMany(Character::class,'location_id');
-    }
+
 }

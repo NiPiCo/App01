@@ -10,9 +10,5 @@ class Origin extends Model
         'name', 'url'
     ];
 
-   
-    public function characters()
-    {
-        return $this->hasMany(Character::class,'origin_id');
-    }
+
 }

@@ -16,12 +16,12 @@ class Character extends Model
     // Relation zu Origin
     public function origin()
     {
-        return $this->hasOne(Origin::class,'origin_id');
+        return $this->hasOne(Location::class,'id','origin_id');
     }
 
     // Relation zu Location
     public function location()
     {
-        return $this->hasOne(Location::class,'location_id');
+        return $this->hasOne(Location::class,'id','location_id');
     }
 }

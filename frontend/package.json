@@ -40,7 +40,7 @@
     "@types/lodash": "^4.14.202",
     "@types/react": "^18.2.46",
     "@types/react-test-renderer": "^18.0.7",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.5"
   },
   "private": true
 }

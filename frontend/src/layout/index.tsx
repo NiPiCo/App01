@@ -6,6 +6,7 @@ export interface WithAppBarProps {
     toggleAppBar: () => void;
 }
 
+
 // Die HOC-Funktion, die die AppBar implementiert
 const withAppBar = <P extends WithAppBarProps>(
     WrappedComponent: React.ReactNode,
