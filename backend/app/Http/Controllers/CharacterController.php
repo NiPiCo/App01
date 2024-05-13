@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Character;
+use App\Models\Location;
 
 class CharacterController extends Controller
 {
@@ -27,8 +28,8 @@ class CharacterController extends Controller
         }
     
         
-        $characters = $query->paginate(20);
-    
+        $characters = $query->with('location')->paginate(20);
+      
         
         $nextPageUrl = $characters->nextPageUrl();
         $data = [
@@ -49,6 +50,14 @@ class CharacterController extends Controller
     {
     
         $character = Character::find($id);
+
+        if($character->origin_id){
+            $character->origin = Location::find($character->origin_id);
+        }
+
+        if($character->location_id){
+            $character->location = Location::find($character->location_id);
+        }
 
         if (!$character) {
             return response()->json(['error' => 'Character not found'], 404);

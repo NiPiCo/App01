@@ -13,8 +13,10 @@ export const CharacterDetail: React.FC = ({}) => {
         const {character} = route.params
         const [episodes, setEpidodes] = useState([])
 
+
         useEffect(() => {
-            Promise.all(character.episode.map(url => fetchData(url)))
+        if(character?.episode){
+                Promise.all(character.episode.map((url:string) => fetchData(url)))
                 .then((results) => {
                     setEpidodes(results)
                     console.log('Alle Anfragen erfolgreich:', results);
@@ -23,6 +25,8 @@ export const CharacterDetail: React.FC = ({}) => {
                     // Fehler bei mindestens einer Anfrage
                     console.error('Fehler bei mindestens einer Anfrage:', error);
                 });
+        }
+
         }, [])
 
         return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Image, Text, View} from 'react-native';
 import Card from "../card";
 import {Character} from "../../types/character-type";
@@ -14,6 +14,7 @@ interface DetailRowProps {
 }
 
 const DetailRow: React.FC<DetailRowProps> = ({label, value}) => {
+    
     return (
         <View style={detailCardStyle.textRow}>
             <Text>{label}</Text>
@@ -23,12 +24,15 @@ const DetailRow: React.FC<DetailRowProps> = ({label, value}) => {
 }
 
 const DetailCard: React.FC<DetailCardProps> = ({character}) => {
+    useEffect(() => {
+        console.log('CHAR', character)
+    });
     return (
         <Card>
             <img src={character.image} style={detailCardStyle.image}/>
             <View style={detailCardStyle.textContainer}>
                 <DetailRow label={'Name:'} value={character.name}/>
-                <DetailRow label={'Herkunft:'} value={character.origin.name}/>
+                <DetailRow label={'Herkunft:'} value={character?.origin?.name}/>
                 <DetailRow label={'Status:'} value={character.status}/>
                 <DetailRow label={'Spezies:'} value={character.species}/>
                 <DetailRow label={'Geschlecht:'} value={character.gender}/>

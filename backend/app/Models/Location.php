@@ -10,9 +10,9 @@ class Location extends Model
         'name', 'url'
     ];
 
-    // Relation zu Character
+  
     public function characters()
     {
-        return $this->hasMany(Character::class);
+        return $this->hasMany(Character::class,'location_id');
     }
 }

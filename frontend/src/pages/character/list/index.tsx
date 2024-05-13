@@ -22,8 +22,8 @@ interface ListProps extends WithAppBarProps {
 
 const CharacterList: React.FC<ListProps> = ({navigation}) => {
 
-        const [chars, setCharsData] = useState<null | Array<Character>>(null);
-        const [data, setData] = useState(null)
+        const [chars, setCharsData] = useState<Array<Character>>([]);
+        const [data, setData] = useState<null |any>(null)
         const [hasNextPage, setHasNextPage] = useState(false)
         const [filter, setFilter] = useState<CharacterFilter>({name: ''})
         const onFilterChanged = _.debounce((charName) => {
@@ -54,7 +54,7 @@ const CharacterList: React.FC<ListProps> = ({navigation}) => {
         const showMore = () => {
             let fetchData = async () => {
                 let axiosInstance = axios.create({
-                    baseURL: data.info.next,
+                    baseURL: data?.info.next,
                     timeout: 5000,
                 });
                 try {
