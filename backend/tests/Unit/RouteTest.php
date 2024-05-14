@@ -13,8 +13,8 @@ class RouteTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/api/test');
-
+        $response = $this->get('/api/characters');
+     
         $response->assertStatus(200);
         
     }

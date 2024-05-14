@@ -9,6 +9,7 @@ import {CharacterDetail} from "./src/pages/character/detail";
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Character from "./src/pages/character";
 import {globalStyles} from "./src/layout/style";
+import Episodes from './src/pages/episode';
 
 function NotificationsScreen({ navigation }) {
     return (
@@ -38,6 +39,7 @@ export default function App() {
             }} initialRouteName="Home">
                 <Drawer.Screen name="Home" component={Home} />
                 <Drawer.Screen name="Characters" component={Character} />
+                <Drawer.Screen name="Episodes" component={Episodes} />
             </Drawer.Navigator>
         </NavigationContainer>
     );

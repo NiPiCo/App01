@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Character;
+use App\Models\Episode;
 use App\Models\Location;
 
-class CharacterController extends Controller
+class EpisodeController extends Controller
 {
     /**
      * Zeige eine Liste aller Charaktere an.
@@ -15,42 +16,27 @@ class CharacterController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Character::query();
-    
-       
-        if ($request->has('status')) {
-            $query->where('status', $request->status);
-        }
-    
-       
-        if ($request->has('name')) {
-            $query->where('name', 'like', '%' . $request->name . '%');
-        }
-    
-        
-        $characters = $query->with('location')->with('origin')->paginate(20);
-      
-        
-        $nextPageUrl = $characters->nextPageUrl();
+        $query = Episode::query();
+        $episodes = $query->paginate(20);
+        $nextPageUrl = $episodes->nextPageUrl();
         $data = [
             'info' => [
-                'count' => $characters->total(),
-                'pages' => $characters->lastPage(),
+                'count' => $episodes->total(),
+                'pages' => $episodes->lastPage(),
                 'next' => $nextPageUrl,
-                'prev' => $characters->previousPageUrl(),
+                'prev' => $episodes->previousPageUrl(),
             ],
-            'results' => $characters->items(),
+            'results' => $episodes->items(),
         ];
-    
-       
+  
         return response()->json($data);
     }
 
     public function findById($id)
     {
-        $character = Character::with('episodes')->find($id);
     
-        
+        $character = Character::find($id);
+
         if($character->origin_id){
             $character->origin = Location::find($character->origin_id);
         }
@@ -64,6 +50,6 @@ class CharacterController extends Controller
         }
         return response()->json($character);
     }
-  
 
+    
 }

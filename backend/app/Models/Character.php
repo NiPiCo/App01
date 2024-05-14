@@ -24,4 +24,9 @@ class Character extends Model
     {
         return $this->hasOne(Location::class,'id','location_id');
     }
+
+    public function episodes (){
+        return $this->belongsToMany(Episode::class);
+    }
+  
 }
