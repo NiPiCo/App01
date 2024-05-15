@@ -11,6 +11,7 @@ import Character from "./src/pages/character";
 import {globalStyles} from "./src/layout/style";
 import Episodes from './src/pages/episode';
 
+
 function NotificationsScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -34,7 +35,7 @@ export default function App() {
         <NavigationContainer theme={NavTheme} >
             <Drawer.Navigator  screenOptions={{
                 sceneContainerStyle:{
-                    background: 'none'
+                
                 },
             }} initialRouteName="Home">
                 <Drawer.Screen name="Home" component={Home} />

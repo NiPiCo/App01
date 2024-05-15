@@ -13,7 +13,7 @@ class CharacterTest extends TestCase
     public function test_get_all_characters()
     {
 
-        $response = $this->get('/api/characters/180');
+        $response = $this->get('/api/characters/episodes/180');
         dd($response->getData());
         $response->assertStatus(200);
     }

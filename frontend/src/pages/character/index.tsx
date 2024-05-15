@@ -22,7 +22,7 @@ const Character: React.FC = () => {
             initialRouteName="Home"
         screenOptions={{
             contentStyle: {
-                height: '100%'
+                backgroundColor: '#fff'
             }
         }}
         >
@@ -34,7 +34,7 @@ const Character: React.FC = () => {
             <Stack.Screen
                 name="Detail"
                 component={CharacterDetail}
-                options={({route}) => ({title: route.params.character.name})}
+                options={({route}) => ({title: route.params?.character?.name})}
             />
         </Stack.Navigator>
     );

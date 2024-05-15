@@ -24,7 +24,7 @@ const Episodes: React.FC = () => {
             initialRouteName="Episodes"
         screenOptions={{
             contentStyle: {
-                height: '100%'
+                backgroundColor:'#fff'
             }
         }}
         >

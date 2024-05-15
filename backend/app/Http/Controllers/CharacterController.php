@@ -64,6 +64,15 @@ class CharacterController extends Controller
         }
         return response()->json($character);
     }
-  
+    
+    public function findRelatedEpisodes($id)
+    {
+        $character = Character::with('episodes')->find($id);
+    
+        if (!$character) {
+            return response()->json(['error' => 'Character not found'], 404);
+        }
+        return response()->json($character->episodes);
+    }
 
 }

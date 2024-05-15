@@ -21,6 +21,7 @@ use App\Http\Controllers\EpisodeController;
 Route::get('/characters', [CharacterController::class,'index']);
 Route::get('/episodes', [EpisodeController::class,'index']);
 Route::get('/characters/{id}', [CharacterController::class,'findById']);
+Route::get('/characters/episodes/{id}', [CharacterController::class,'findRelatedEpisodes']);
 Route::get('/test', [TestController::class,'index']);
 Route::middleware('api')->group(function () {
     Route::get('/testAPI', [TestController::class,'index']);

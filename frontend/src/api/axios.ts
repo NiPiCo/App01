@@ -25,7 +25,13 @@ export const fetchCharacter = async (charId: number) => {
 
     }
 };
-
+export const fetchCharacterEpisodes = async (charId: number) => {
+    try {
+        const response = await axiosInstance.get(`characters/episodes/${charId}`);
+        return response.data;
+    } catch (error) {
+    }
+};
 export const fetchAllCharacters = async (filter: CharacterFilter) => {
     try {
         const response = await axiosInstance.get('characters', {
