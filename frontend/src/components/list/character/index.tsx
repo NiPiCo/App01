@@ -10,11 +10,11 @@ interface ListProps<T> {
 
 
 
-interface ListItemProps {
+interface CharacterListItemProps {
     item: Character,
 }
 
-const ListItem: React.FC<ListItemProps> = ({item}) => {
+const CharacterListItem: React.FC<CharacterListItemProps> = ({item}) => {
     return (
         <View style={style.container}>
             <Text>{item.name}</Text>
@@ -22,5 +22,5 @@ const ListItem: React.FC<ListItemProps> = ({item}) => {
         </View>
     );
 };
-export default ListItem;
+export default CharacterListItem;
 

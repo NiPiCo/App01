@@ -1,0 +1,15 @@
+FROM php:latest
+
+# Install missing tools
+RUN apt-get update && apt-get install -y zip unzip
+
+WORKDIR /var/www
+
+COPY composer.phar composer.json ./
+RUN php composer.phar install --no-dev
+
+COPY . .
+
+EXPOSE 80
+
+CMD ["php", "artisan", "serve"]

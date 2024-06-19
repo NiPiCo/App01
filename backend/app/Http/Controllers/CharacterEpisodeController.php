@@ -11,7 +11,6 @@ class CharacterEpisodeController extends Controller
         $episodesForCharacter = CharacterEpisode::where('character_id', $characterId)
             ->with('episodes', 'characters')
             ->get();
-
         return $episodesForCharacter;
     }
 }
